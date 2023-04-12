@@ -6,22 +6,71 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:35:57 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/12 14:55:40 by chustei          ###   ########.fr       */
+/*   Updated: 2023/04/12 20:50:05 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minitalk.h"
+
+void	send_bit(int pid, int bit)
+{
+	if (bit == 1)
+	{
+		if (kill(pid, SIGUSR1) != 0)
+		{
+			ft_printf("Error: failed to send signal to PID %d\n", pid);
+			exit(1);
+		}
+	}
+	else if (bit == 0)
+	{	
+		if (kill(pid, SIGUSR2) != 0)
+		{
+			ft_printf("Error: failed to send signal to PID %d\n", pid);
+			exit(1);
+		}
+	}
+	else
+	{
+		ft_printf("Error: invalid bit value %d\n", bit);
+		exit(1);
+	}
+}
+
+void	send_byte(int pid, char byte)
+{
+	int	i;
+	int	bit;
+
+	i = -1;
+	while (++i < 8)
+	{
+		bit = (byte >> i) & 1;
+		send_bit(pid, bit);
+		usleep(200);
+	}
+}
+
+void	send_message(int pid, char *message)
+{
+	int	i;
+
+	i = -1;
+	ft_printf("PID: %d\n", pid);
+	while (message[++i])
+		send_byte(pid, message[i]);
+	send_byte(pid, '\n');
+}
 
 int	main(int ac, char **av)
 {
 	if (ac == 3)
 	{
 		if (ft_atoi(av[1]) > 0)
-			ft_printf("PID: %d\n", ft_atoi(av[1]), av[2]);
+			send_message(ft_atoi(av[1]), av[2]);
 		else
 		{
-			ft_printf("Error: PID not number or not positive.\n");
-			ft_printf("Please provide a valide PID.\n");
+			ft_printf("Error: Invalid PID\n");
 			return (1);
 		}
 	}
