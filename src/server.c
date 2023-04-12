@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 15:52:26 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/12 07:48:15 by chustei          ###   ########.fr       */
+/*   Created: 2023/04/12 07:48:32 by chustei           #+#    #+#             */
+/*   Updated: 2023/04/12 07:53:47 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
-# include "../lib/libft/inc/libft.h"
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
+#include "../inc/minitalk.h"
 
-#endif
+int	main(void)
+{
+	ft_printf("PID: %d\n", getpid());
+
+	return (0);
+}
