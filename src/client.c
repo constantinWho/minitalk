@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:35:57 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/12 20:50:05 by chustei          ###   ########.fr       */
+/*   Updated: 2023/04/13 14:19:17 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	send_bit(int pid, int bit)
 	}
 }
 
-void	send_byte(int pid, char byte)
+void	send_byte(int pid, unsigned char byte)
 {
 	int	i;
 	int	bit;
@@ -47,7 +47,7 @@ void	send_byte(int pid, char byte)
 	{
 		bit = (byte >> i) & 1;
 		send_bit(pid, bit);
-		usleep(200);
+		usleep(100);
 	}
 }
 
@@ -56,7 +56,6 @@ void	send_message(int pid, char *message)
 	int	i;
 
 	i = -1;
-	ft_printf("PID: %d\n", pid);
 	while (message[++i])
 		send_byte(pid, message[i]);
 	send_byte(pid, '\n');

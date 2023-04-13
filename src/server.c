@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 07:48:32 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/12 20:41:42 by chustei          ###   ########.fr       */
+/*   Updated: 2023/04/13 14:09:30 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int	main(void)
 	int		pid;
 
 	pid = getpid();
-	ft_printf("PID: %d\n", pid);
+	ft_printf("My PID: %d\n", pid);
 	ft_printf("Message me, baby! :*\n", pid);
+	ft_printf("--------------------\n");
 	while (1)
 	{
 		signal(SIGUSR1, print_message);
