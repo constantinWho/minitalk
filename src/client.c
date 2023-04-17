@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:35:57 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/13 14:19:17 by chustei          ###   ########.fr       */
+/*   Updated: 2023/04/13 16:55:39 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	send_byte(int pid, unsigned char byte)
 	{
 		bit = (byte >> i) & 1;
 		send_bit(pid, bit);
-		usleep(100);
+		usleep(300);
 	}
 }
 
@@ -85,6 +85,5 @@ int	main(int ac, char **av)
 		ft_printf("Please provide exactly 2 arguments.\n");
 		return (1);
 	}
-
 	return (0);
 }

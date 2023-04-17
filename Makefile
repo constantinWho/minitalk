@@ -22,7 +22,7 @@ server: $(SERVER_OBJS) $(LIBFT_DIR)/libft.a
 	$(CC) $(CFLAGS) $(SERVER_OBJS) -L$(LIBFT_DIR) -lft -o $@
 
 # Build the libft library
-$(LIBFT_DIR)/libft.a:
+$(LIBFT_DIR)/libft.a: $(LIBFT_DIR)/src/*.c
 	$(MAKE) -C $(LIBFT_DIR) all
 
 # Rule to build object files
@@ -32,10 +32,11 @@ $(LIBFT_DIR)/libft.a:
 # Remove object files and executables
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(RM) client server $(CLIENT_OBJS) $(SERVER_OBJS)
+	$(RM) $(CLIENT_OBJS) $(SERVER_OBJS)
 
 # Remove object files, executables, and the libft library
 fclean: clean
+	$(RM) client server 
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 # Rebuild the project from scratch
