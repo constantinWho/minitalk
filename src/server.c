@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 07:48:32 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/13 16:52:39 by chustei          ###   ########.fr       */
+/*   Updated: 2023/04/17 09:43:07 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	print_message(int signal)
 		bit = 0;
 		byte = 0;
 	}
+	usleep(300);
 }
 
 int	main(void)

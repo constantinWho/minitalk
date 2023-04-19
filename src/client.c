@@ -6,7 +6,7 @@
 /*   By: chustei <chustei@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:35:57 by chustei           #+#    #+#             */
-/*   Updated: 2023/04/13 16:55:39 by chustei          ###   ########.fr       */
+/*   Updated: 2023/04/17 09:41:50 by chustei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	send_message(int pid, char *message)
 	while (message[++i])
 		send_byte(pid, message[i]);
 	send_byte(pid, '\n');
+	usleep(300);
 }
 
 int	main(int ac, char **av)
